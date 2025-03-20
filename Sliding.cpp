@@ -137,3 +137,33 @@ public:
 
     }
 };
+
+
+/// Striver A TO Z  1 (MEDIUM) ===>(3. Longest Substring Without Repeating Characters) //////////////////////////////////////////////////////////////
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n=s.length();
+        int i=0;
+        int j=0;
+        int cnt=0;
+        int result=0;
+        unordered_map<char,int>mp;
+
+        while(j<n){
+          char ch=s[j];
+          mp[ch]++;
+          
+          while(mp[ch]>1){
+            mp[s[i]]--;
+            i++;
+          }
+
+          result=max(result,j-i+1);
+          j++;
+        }
+
+        return result;
+    }
+};
